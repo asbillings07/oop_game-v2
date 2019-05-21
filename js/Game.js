@@ -2,14 +2,64 @@
  * Project 4 - OOP Game App
  * Game.js */
 
-class Game {}
+class Game {
+  constructor() {
+    this.missed = 0;
+    this.phrases = this.createPhrases();
+    this.activePhrase = null;
+  }
+
+  /**
+   * Creates phrases for use in game
+   * @return {array} An array of phrases that could be used in the game
+   */
+
+  createPhrases() {
+    const phrases = [
+      new Phrase("Life Is Like a Box of Chocolates"),
+      new Phrase("There is nothing to it but to do it"),
+      new Phrase("Life will find a way"),
+      new Phrase("If at first you don't succeed try again"),
+      new Phrase("You can do anything you put your mind to")
+    ];
+
+    return phrases;
+  }
+
+  startGame() {}
+
+  /**
+   * Selects random phrase from phrases property
+   * @return {Object} Phrase object chosen to be used
+   */
+
+  getRandomPhrase() {
+    const random = Math.floor(Math.random() * this.phrases.length);
+    const randomPhrase = this.phrases[random];
+    return randomPhrase;
+  }
+
+  handleInteraction() {}
+
+  removeLife() {}
+  checkForWin() {}
+
+  gameOver() {}
+}
 
 /*
- Create the Game class in the Game.js file.
+ 
 The class should include a constructor that initializes the following properties:
-missed: used to track the number of missed guesses by the player. The initial value is 0, since no guesses have been made at the start of the game.
-phrases: an array of five Phrase objects to use with the game. A phrase should only include letters and spaces— no numbers, punctuation or other special characters.
-activePhrase: This is the Phrase object that’s currently in play. The initial value is null. Within the startGame() method, this property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
+
+missed: used to track the number of missed guesses by the player. 
+The initial value is 0, since no guesses have been made at the start of the game.
+
+phrases: an array of five Phrase objects to use with the game. 
+A phrase should only include letters and spaces— no numbers, punctuation or other special characters.
+
+activePhrase: This is the Phrase object that’s currently in play. The initial value is null. 
+Within the startGame() method, this property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
+
 The class should also have these methods:
 startGame(): hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
 getRandomPhrase(): this method randomly retrieves one of the phrases stored in the phrases array and returns it.
