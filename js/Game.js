@@ -26,7 +26,22 @@ class Game {
     return phrases;
   }
 
-  startGame() {}
+  /**
+   * Begins game by selecting a random phrase and displaying it to user
+   */
+
+  startGame() {
+    $("#overlay").hide();
+    this.activePhrase = this.getRandomPhrase();
+    return this.activePhrase.addPhraseToDisplay();
+
+    // The `startGame()` method hides the start screen overlay (the `div` element with an `id` of
+    // `overlay`), calls the `getRandomPhrase()` method to select a Phrase object from the Game
+    // object’s array of phrases, and then adds the phrase to the gameboard by calling the
+    // `addPhraseToDisplay()` method (which is a method on the Phrase class) on the selected Phrase
+    // object. The selected phrase should be stored in the Game’s `activePhrase` property, so it can be
+    // easily accessed throughout the game.
+  }
 
   /**
    * Selects random phrase from phrases property
@@ -40,28 +55,64 @@ class Game {
   }
 
   handleInteraction() {}
+  /**
+   * Increases the value of the missed property
+   * Removes a life from the scoreboard
+   * Checks if player has remaining lives and ends game if player is out
+   */
+  removeLife() {
+    // This method removes a life from the scoreboard, by replacing one
+    // of the `liveHeart.png` images with a `lostHeart.png` image (found in the `images`
+    // folder) and increments the `missed` property. If the player has five missed
+    // guesses (i.e they're out of lives), then end the game by calling the `gameOver()`
+    // method.
+  }
 
-  removeLife() {}
-  checkForWin() {}
+  /**
+* Checks for winning move
+* @return {boolean} True if game has been won, false if game wasn't
+won
+*/
 
-  gameOver() {}
+  checkForWin() {
+    const letters = $("#phrase ul");
+
+    letters.forEach(letter => {
+      if ($(letter).hasClass("show letter")) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    //     `checkForWin()`: This method checks to see if the player has revealed all of the
+    // letters in the active phrase.
+  }
+  /**
+   * Displays game over message
+   * @param {boolean} gameWon - Whether or not the user won the game
+   */
+  gameOver() {
+    $("#overlay").show();
+    if (this.checkForWin) {
+      $("#overlay").toggleClass("win");
+      $("#game-over-message").text(
+        `Congrats, You've won the game! to play again press the start button`
+      );
+    } else {
+      $("#game-over-message").text(
+        `You lost, you've ran out of lives. To play again, press the start button `
+      );
+      $("#overlay").toggleClass("lose");
+    }
+  }
 }
 
 /*
  
-The class should include a constructor that initializes the following properties:
-
-missed: used to track the number of missed guesses by the player. 
-The initial value is 0, since no guesses have been made at the start of the game.
-
-phrases: an array of five Phrase objects to use with the game. 
-A phrase should only include letters and spaces— no numbers, punctuation or other special characters.
-
-activePhrase: This is the Phrase object that’s currently in play. The initial value is null. 
-Within the startGame() method, this property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
 
 The class should also have these methods:
-startGame(): hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() method on the active Phrase object.
+
 getRandomPhrase(): this method randomly retrieves one of the phrases stored in the phrases array and returns it.
 handleInteraction(): this method controls most of the game logic. It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
 Disable the selected letter’s onscreen keyboard button.
