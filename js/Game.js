@@ -61,6 +61,14 @@ class Game {
    * Checks if player has remaining lives and ends game if player is out
    */
   removeLife() {
+    const $score = $(".tries img");
+
+    $score[this.missed].attr("src", "images/lostHeart.png");
+    this.missed += 1;
+    if (this.missed > 5) {
+      this.gameOver(false);
+    }
+
     // This method removes a life from the scoreboard, by replacing one
     // of the `liveHeart.png` images with a `lostHeart.png` image (found in the `images`
     // folder) and increments the `missed` property. If the player has five missed
@@ -75,12 +83,10 @@ won
 */
 
   checkForWin() {
-    const letters = $("#phrase ul");
+    const $letters = $("#phrase li");
 
-    letters.forEach(letter => {
-      if ($(letter).hasClass("show letter")) {
-        return true;
-      } else {
+    $letters.each((index, letter) => {
+      if ($(letter[index]).hasClass("hide letter")) {
         return false;
       }
     });
@@ -92,14 +98,14 @@ won
    * Displays game over message
    * @param {boolean} gameWon - Whether or not the user won the game
    */
-  gameOver() {
+  gameOver(gameWon) {
     $("#overlay").show();
-    if (this.checkForWin) {
+    if (gamewon === true) {
       $("#overlay").toggleClass("win");
       $("#game-over-message").text(
         `Congrats, You've won the game! to play again press the start button`
       );
-    } else {
+    } else if (gameWon === false) {
       $("#game-over-message").text(
         `You lost, you've ran out of lives. To play again, press the start button `
       );

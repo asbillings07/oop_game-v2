@@ -2,6 +2,17 @@
  * Project 4 - OOP Game App
  * app.js */
 
+const game = new Game();
+
+$("#btn__reset").on("click", () => {
+  game.startGame();
+  console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+});
+
+$("#qwerty").on("click", () => {
+  game.checkForWin();
+});
+
 /**
   * Update the app.js file.
 Create a new instance of the Game class and add event listeners for the start button and onscreen keyboard buttons:

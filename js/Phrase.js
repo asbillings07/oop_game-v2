@@ -16,9 +16,7 @@ class Phrase {
     const letters = [...this.phrase];
     letters.forEach(letter => {
       if (letter !== " ") {
-        $("#phrase ul").append(
-          `<li class="hide letter ${letter} ">${letter}</li>`
-        );
+        $("#phrase ul").append(`<li class='hide letter'>${letter}</li>`);
       }
       if (letter === " ") {
         $("#phrase ul").append(`<li class="space">`);
@@ -41,12 +39,12 @@ class Phrase {
    * Displays passed letter on screen after a match is found
    * @param (string) letter - Letter to display
    */
-  showMatchedLetter(letter) {
-    const listLetters = $("#phrase ul");
+  showMatchedLetter(letterMatch) {
+    const $listLetters = $("#phrase li");
 
-    listLetters.forEach(listLetter => {
-      if (listLetter === letter.toLowerCase()) {
-        $(listLetter).toggleClass("show letter");
+    $listLetters.each((index, letter) => {
+      if (letter.textContent === letterMatch) {
+        $(letter).toggleClass("show letter");
       }
     });
 
