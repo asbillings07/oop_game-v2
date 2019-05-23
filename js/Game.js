@@ -53,8 +53,31 @@ class Game {
     const randomPhrase = this.phrases[random];
     return randomPhrase;
   }
+  /**
+   * Handles onscreen keyboard button clicks
+   * @param (HTMLButtonElement) button - The clicked button element
+   */
+  handleInteraction(button) {
+    /*
 
-  handleInteraction() {}
+    Build out the `handleInteraction()` method in the Game class making use of the support
+methods that you created in step 9. This method controls most of the game logic. It checks to
+see if the onscreen keyboard button clicked by the player matches a letter in the phrase, and
+then directs the game based on a correct or incorrect guess. This method should:
+
+● Disable the selected letter’s onscreen keyboard button.
+
+● If the phrase does not include the guessed letter, add the `wrong` CSS class to the
+selected letter's keyboard button and call the `removeLife()` method.
+
+● If the phrase includes the guessed letter, add the `chosen` CSS class to the selected
+letter's keyboard button, call the `showMatchedLetter()` method on the phrase, and then
+call the `checkForWin()` method. If the player has won the game, also call the
+`gameOver()` method.
+
+*/
+  }
+
   /**
    * Increases the value of the missed property
    * Removes a life from the scoreboard
@@ -68,12 +91,6 @@ class Game {
     if (this.missed === 5) {
       this.gameOver(false);
     }
-
-    // This method removes a life from the scoreboard, by replacing one
-    // of the `liveHeart.png` images with a `lostHeart.png` image (found in the `images`
-    // folder) and increments the `missed` property. If the player has five missed
-    // guesses (i.e they're out of lives), then end the game by calling the `gameOver()`
-    // method.
   }
 
   /**
@@ -104,12 +121,12 @@ won
    */
   gameOver(gameWon) {
     $("#overlay").show();
-    if (gamewon === true) {
+    if (gameWon) {
       $("#overlay").toggleClass("win");
       $("#game-over-message").text(
         `Congrats, You've won the game! to play again press the start button`
       );
-    } else if (gameWon === false) {
+    } else {
       $("#game-over-message").text(
         `You lost, you've ran out of lives. To play again, press the start button `
       );
@@ -117,18 +134,3 @@ won
     }
   }
 }
-
-/*
- 
-
-The class should also have these methods:
-
-getRandomPhrase(): this method randomly retrieves one of the phrases stored in the phrases array and returns it.
-handleInteraction(): this method controls most of the game logic. It checks to see if the button clicked by the player matches a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
-Disable the selected letter’s onscreen keyboard button.
-If the phrase does not include the guessed letter, add the wrong CSS class to the selected letter's keyboard button and call the removeLife() method.
-If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the game, also call the gameOver() method.
-removeLife(): this method removes a life from the scoreboard, by replacing one of the liveHeart.png images with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
-checkForWin(): this method checks to see if the player has revealed all of the letters in the active phrase.
-gameOver(): this method displays the original start screen overlay, and depending on the outcome of the game, updates the overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS class with either the win or lose CSS class.
- */

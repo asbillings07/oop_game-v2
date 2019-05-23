@@ -8,10 +8,7 @@ $("#btn__reset").on("click", () => {
   game.startGame();
   console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 });
-
-$("#qwerty").on("click", () => {
-  game.checkForWin();
-});
+$(".key").on("click", game.handleInteraction);
 
 /**
   * Update the app.js file.
