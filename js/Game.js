@@ -63,9 +63,9 @@ class Game {
   removeLife() {
     const $score = $(".tries img");
 
-    $score[this.missed].attr("src", "images/lostHeart.png");
+    $($score[this.missed]).attr("src", "images/lostHeart.png");
     this.missed += 1;
-    if (this.missed > 5) {
+    if (this.missed === 5) {
       this.gameOver(false);
     }
 
