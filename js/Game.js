@@ -84,12 +84,16 @@ won
 
   checkForWin() {
     const $letters = $("#phrase li");
+    let bool;
 
     $letters.each((index, letter) => {
-      if ($(letter[index]).hasClass("hide letter")) {
-        return false;
+      if ($(letter).hasClass("hide letter") && !$(letter).hasClass("space")) {
+        bool = false;
+      } else {
+        bool = true;
       }
     });
+    return bool;
 
     //     `checkForWin()`: This method checks to see if the player has revealed all of the
     // letters in the active phrase.
