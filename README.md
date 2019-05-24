@@ -36,6 +36,22 @@ if you make an incorrect choice your button will highlight orange.
 
 <img width="1264" alt="Screen Shot 2019-05-24 at 12 39 39 PM" src="https://user-images.githubusercontent.com/28825784/58343477-1736d200-7e21-11e9-8b54-61aa7ace8676.png">
 
+```
+If you guess all of the letters correctly you will be greeted with the following screen:
+You will have the option to play again.
+
+```
+
+<img width="1262" alt="correct" src="https://user-images.githubusercontent.com/28825784/58345082-80b8df80-7e25-11e9-9ba1-678f11245bbd.png">
+
+```
+If you guess all of the letters incorrectly you will be greeted with the following screen:
+You will have the option to play again.
+
+```
+
+<img width="1265" alt="incorrect" src="https://user-images.githubusercontent.com/28825784/58345083-80b8df80-7e25-11e9-954f-9dff8baf0d9f.png">
+
 ## Motivation & Changes
 
 ```
