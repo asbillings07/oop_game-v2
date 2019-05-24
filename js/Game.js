@@ -64,15 +64,15 @@ class Game {
     }
     $button.attr("disabled", true);
 
-    if (game.activePhrase.checkLetter(char)) {
+    if (this.activePhrase.checkLetter(char)) {
       $button.toggleClass("chosen");
-      game.activePhrase.showMatchedLetter(char);
-      if (game.checkForWin()) {
-        game.gameOver(true);
+      this.activePhrase.showMatchedLetter(char);
+      if (this.checkForWin()) {
+        this.gameOver(true);
       }
     } else {
       $button.toggleClass("wrong");
-      game.removeLife();
+      this.removeLife();
     }
   }
 
