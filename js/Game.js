@@ -16,11 +16,16 @@ class Game {
 
   createPhrases() {
     const phrases = [
-      new Phrase("Life Is Like a Box of Chocolates"),
-      new Phrase("There is nothing to it but to do it"),
-      new Phrase("Life will find a way"),
-      new Phrase("If at first you don't succeed try again"),
-      new Phrase("You can do anything you put your mind to")
+      new Phrase("Obi wan kenobi"),
+      new Phrase("Master Yoda"),
+      new Phrase("Mace Windu"),
+      new Phrase("Kit Fisto"),
+      new Phrase("Plo Koon"),
+      new Phrase("Agen Kolar"),
+      new Phrase("Shaak Ti"),
+      new Phrase("Luke Skywalker"),
+      new Phrase("Qui Gon Ginn"),
+      new Phrase("Ahsoka Tano")
     ];
 
     return phrases;
@@ -32,15 +37,10 @@ class Game {
 
   startGame() {
     $("#overlay").hide();
+    $("#qwerty").show();
+    $("#scoreboard").show();
     this.activePhrase = this.getRandomPhrase();
     return this.activePhrase.addPhraseToDisplay();
-
-    // The `startGame()` method hides the start screen overlay (the `div` element with an `id` of
-    // `overlay`), calls the `getRandomPhrase()` method to select a Phrase object from the Game
-    // object’s array of phrases, and then adds the phrase to the gameboard by calling the
-    // `addPhraseToDisplay()` method (which is a method on the Phrase class) on the selected Phrase
-    // object. The selected phrase should be stored in the Game’s `activePhrase` property, so it can be
-    // easily accessed throughout the game.
   }
 
   /**
@@ -58,24 +58,20 @@ class Game {
    * @param (HTMLButtonElement) button - The clicked button element
    */
   handleInteraction(button) {
-    /*
+    if (button.target) {
+      $(button.target).attr("disabled", true);
+    }
 
-    Build out the `handleInteraction()` method in the Game class making use of the support
-methods that you created in step 9. This method controls most of the game logic. It checks to
-see if the onscreen keyboard button clicked by the player matches a letter in the phrase, and
-then directs the game based on a correct or incorrect guess. This method should:
-
-● Disable the selected letter’s onscreen keyboard button.
-
-● If the phrase does not include the guessed letter, add the `wrong` CSS class to the
-selected letter's keyboard button and call the `removeLife()` method.
-
-● If the phrase includes the guessed letter, add the `chosen` CSS class to the selected
-letter's keyboard button, call the `showMatchedLetter()` method on the phrase, and then
-call the `checkForWin()` method. If the player has won the game, also call the
-`gameOver()` method.
-
-*/
+    if (game.activePhrase.checkLetter(button.target.textContent)) {
+      $(button.target).toggleClass("chosen");
+      game.activePhrase.showMatchedLetter(button.target.textContent);
+      if (game.checkForWin()) {
+        game.gameOver(true);
+      }
+    } else {
+      $(button.target).toggleClass("wrong");
+      game.removeLife();
+    }
   }
 
   /**
@@ -100,37 +96,53 @@ won
 */
 
   checkForWin() {
-    const $letters = $("#phrase li");
+    const $hideClass = $(".hide");
     let bool;
 
-    $letters.each((index, letter) => {
-      if ($(letter).hasClass("hide letter") && !$(letter).hasClass("space")) {
-        bool = false;
-      } else {
-        bool = true;
-      }
-    });
+    if ($hideClass.length === 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
     return bool;
-
-    //     `checkForWin()`: This method checks to see if the player has revealed all of the
-    // letters in the active phrase.
   }
   /**
    * Displays game over message
    * @param {boolean} gameWon - Whether or not the user won the game
    */
   gameOver(gameWon) {
-    $("#overlay").show();
     if (gameWon) {
-      $("#overlay").toggleClass("win");
+      $("#overlay")
+        .show()
+        .removeClass()
+        .addClass("win");
+
       $("#game-over-message").text(
-        `Congrats, You've won the game! to play again press the start button`
+        `You have succeed in your mission, to hunt more Jedi press the start game button`
       );
+      game.resetGame();
     } else {
+      $("#overlay")
+        .show()
+        .removeClass()
+        .addClass("lose");
       $("#game-over-message").text(
-        `You lost, you've ran out of lives. To play again, press the start button `
+        `The Jedi outsmarted you this time, to try again press the start game button `
       );
-      $("#overlay").toggleClass("lose");
+      game.resetGame();
     }
+  }
+
+  resetGame() {
+    const $newScore = $(".tries img");
+    $("ul li").remove();
+    $(".key").attr("disabled", false);
+    $(".key")
+      .removeClass("chosen wrong")
+      .addClass("key");
+    $newScore.each((indexInArray, heart) => {
+      $(heart).attr("src", "images/liveHeart.png");
+    });
+    this.missed = 0;
   }
 }
