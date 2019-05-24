@@ -23,8 +23,7 @@
   font-family: "Montserrat", sans-serif;
 }
 html {
-  background: url(/Users/aaronbillings/Desktop/oop_game-v2/images/star-wars-img.jpg)
-    no-repeat center center fixed;
+  background: url(../images/star-wars-img.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
