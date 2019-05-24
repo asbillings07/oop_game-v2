@@ -57,19 +57,21 @@ class Game {
    * Handles onscreen keyboard button clicks
    * @param (HTMLButtonElement) button - The clicked button element
    */
-  handleInteraction(button) {
-    if (button.target) {
-      $(button.target).attr("disabled", true);
+  handleInteraction(char) {
+    const $button = $(`.key:contains('${char}')`);
+    if ($button.attr("disabled")) {
+      return;
     }
+    $button.attr("disabled", true);
 
-    if (game.activePhrase.checkLetter(button.target.textContent)) {
-      $(button.target).toggleClass("chosen");
-      game.activePhrase.showMatchedLetter(button.target.textContent);
+    if (game.activePhrase.checkLetter(char)) {
+      $button.toggleClass("chosen");
+      game.activePhrase.showMatchedLetter(char);
       if (game.checkForWin()) {
         game.gameOver(true);
       }
     } else {
-      $(button.target).toggleClass("wrong");
+      $button.toggleClass("wrong");
       game.removeLife();
     }
   }
