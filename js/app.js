@@ -3,12 +3,32 @@
  * app.js */
 
 const game = new Game();
+const $startButton = $("#btn__start");
+const $resetButton = $("#btn__reset");
+const $keys = $(".key");
 
-$("#btn__reset").on("click", () => {
+$("#qwerty").hide();
+$("#scoreboard").hide();
+
+$($resetButton).hide();
+$startButton.on("click", () => {
   game.startGame();
   console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 });
-$(".key").on("click", game.handleInteraction);
+
+$keys.on("click", game.handleInteraction);
+
+$resetButton.on("click", () => {
+  game.resetGame();
+});
+
+/*
+Remove all `li` elements from the Phrase `ul` element.
+● Enable all of the onscreen keyboard buttons and update each to use the `key` CSS class,
+and not use the `chosen` or `wrong` CSS classes.
+● Reset all of the heart images (i.e. the player's lives) in the scoreboard at the bottom of
+the gameboard to display the `liveHeart.png` image.
+*/
 
 /**
   * Update the app.js file.
