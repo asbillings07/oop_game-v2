@@ -20,8 +20,16 @@ To play the game, download the project files and load the index.html file in to 
 ## Usage
 
 ```
-Once the game is loaded press on the button keys to make your choice. 
-If you make a right choice your button will highlight blue, 
+Once the game is loaded you will see a press start button.
+Press this button to start the game.
+
+```
+
+<img width="1264" alt="press start" src="https://user-images.githubusercontent.com/28825784/58344853-d2149f00-7e24-11e9-81bd-cbb50c216448.png">
+
+```
+Once you start the game, you can begin pressing letters to guess the name of the Jedi
+If you make a right choice your button will highlight blue,
 if you make an incorrect choice your button will highlight orange.
 
 ```
@@ -31,8 +39,8 @@ if you make an incorrect choice your button will highlight orange.
 ## Motivation & Changes
 
 ```
-This game was created as a part of a bootcamp training at Tree House. 
-The orignial design has been altered with a new name of the App, 
-new pictures and different colors to highlight which button choices are correct or 
+This game was created as a part of a bootcamp training at Tree House.
+The orignial design has been altered with a new name of the App,
+new pictures and different colors to highlight which button choices are correct or
 incorrect but the overall feel the of the app has remained the same.
 ```
