@@ -37,7 +37,7 @@ class Game {
 
   startGame() {
     $("#overlay").hide();
-    $("#qwerty").show();
+    $("#qwerty").slideDown(500);
     $("#scoreboard").show();
     this.activePhrase = this.getRandomPhrase();
     return this.activePhrase.addPhraseToDisplay();
