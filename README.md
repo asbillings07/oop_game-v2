@@ -22,12 +22,12 @@ To play the game, download the project files and load the index.html file in to 
 ```
 Once the game is loaded press on the button keys to make your choice. If you make a right choice your button will highlight blue, if you make an incorrect choice your button will highlight orange.
 
+```
+
 <img width="1264" alt="Screen Shot 2019-05-24 at 12 39 39 PM" src="https://user-images.githubusercontent.com/28825784/58343477-1736d200-7e21-11e9-8b54-61aa7ace8676.png">
 
-```
-
-## Motivation
+## Motivation & Changes
 
 ```
-This game was created as a part of a bootcamp training at Tree House
+This game was created as a part of a bootcamp training at Tree House. The orignial design has been altered with a new name of the App, new pictures and different colors to highlight which button choices are correct or incorrect but the overall feel the of the app has remained the same.
 ```
