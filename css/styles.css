@@ -29,11 +29,18 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
+
 body {
   justify-content: space-evenly;
   flex-direction: column;
   display: flex;
   height: 100vh;
+}
+#phrase ul li {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 li,
