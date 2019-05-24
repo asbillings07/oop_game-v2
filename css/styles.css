@@ -1,28 +1,35 @@
 /* Main styles */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300");
 
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
+  --color-win: #78cf82;
+  --color-lose: #d94545;
   --color-start: #5b85b7;
   --color-neutral: #445069;
-  --color-neutral-light: #D2D2D2;
-  --color-keys: #37474F;
-  --color-keys-light: #E5E5E5;
+  --color-neutral-light: #d2d2d2;
+  --color-keys: #37474f;
+  --color-keys-light: #e5e5e5;
   --font-size-large: 60px;
   --font-size-medium: 20px;
-  --transition: all .2s ease-in-out;
+  --transition: all 0.2s ease-in-out;
 }
 
 /* main */
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
-
+html {
+  background: url(/Users/aaronbillings/Desktop/oop_game-v2/images/star-wars-img.jpg)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 body {
   justify-content: space-evenly;
   flex-direction: column;
@@ -30,7 +37,9 @@ body {
   height: 100vh;
 }
 
-li, ol, ul {
+li,
+ol,
+ul {
   padding: 0;
   display: inline-block;
 }
@@ -49,7 +58,7 @@ h1 {
 button {
   margin: 6px;
   border: 1px solid transparent;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   color: var(--color-keys);
   font-size: var(--font-size-medium);
   background-color: var(--color-keys-light);
@@ -61,8 +70,14 @@ button {
 }
 
 #btn__reset {
-	width: 200px;
-	margin: 0 auto;
+  width: 200px;
+  margin: 0 auto;
+  position: absolute;
+}
+
+#btn__start {
+  width: 200px;
+  margin: 0 auto;
 }
 
 .main-container {
@@ -79,7 +94,7 @@ button {
   padding: 10px;
 }
 
-#phrase ul li{
+#phrase ul li {
   margin-top: 15px;
 }
 
@@ -88,7 +103,6 @@ button {
 .header {
   color: #3a3f58;
 }
-
 
 /* Phrase */
 
@@ -107,8 +121,6 @@ button {
   width: 15px;
 }
 
-
-
 .show {
   color: #fff;
   background-color: #4ac0d5;
@@ -118,10 +130,9 @@ button {
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   border-radius: 5px;
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
 }
-
 
 /* Keyboard */
 
@@ -134,12 +145,12 @@ button {
   background: #3a3f58;
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .wrong {
   background: #f7a964;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .btn__reset {
@@ -149,8 +160,9 @@ button {
   border-radius: 5px;
   font-size: 20px;
   cursor: pointer;
-  border-bottom: solid 4px rgba(0, 0, 0, .3);
-  border-right: solid 3px rgba(0, 0, 0, .3)
+  border-bottom: solid 4px rgba(0, 0, 0, 0.3);
+  border-right: solid 3px rgba(0, 0, 0, 0.3);
+  position: absolute;
 }
 
 .btn__reset:active {
@@ -159,14 +171,25 @@ button {
   border-right: solid 3px rgba(0, 0, 0, 0);
 }
 
-
 /* Overlay */
 
 #overlay {
   display: flex;
   flex-direction: column;
   position: fixed;
-  color: #FFFFFF;
+  color: #ffffff;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+}
+#img {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #ffffff;
   justify-content: center;
   top: 0;
   bottom: 0;
@@ -176,12 +199,12 @@ button {
 }
 
 .title {
-  color: #FFF;
+  color: #fff;
 }
 
-.start {
+/*.start {
   background-color: #3a3f58;
-}
+}*/
 
 .start a {
   color: #fff;
