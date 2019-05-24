@@ -6,6 +6,8 @@
 
 Jedi Hunter is word/phrase guessing game. The game allows you 5 chances to guess the name of the Jedi. If you guess the name correctly you win. You have 5 lives at the start of the game. If you guess incorrectly, you lose a life. If you gues 5 times incorrectly you lose the game and will have to start over.
 
+You can view this site live at the link here: https://serene-stallman-17edd6.netlify.com/
+
 ## Languages Used
 
 ```
